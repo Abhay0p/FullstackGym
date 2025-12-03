@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Fullstack Gym</title>
+    <!-- REMOVED guard.js so the page doesn't redirect on load -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        :root {
+            --dark-bg: #121212;
+            --dark-card: #1e1e1e;
+            --dark-border: #333;
+            --gold-accent: #d4af37;
+            --light-text: #f0f0f0;
+        }
+        
+        body { background-color: var(--dark-bg); color: var(--light-text); }
+        .navbar { transition: background-color 0.4s ease-out; padding-top: 1rem; padding-bottom: 1rem; }
+        .navbar.scrolled { background-color: var(--dark-bg) !important; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); }
+        .navbar-brand { font-weight: bold; font-size: 1.5rem; color: var(--gold-accent) !important; }
+        .navbar-nav .nav-link { position: relative; padding-bottom: 0.5rem; transition: color 0.3s ease; }
+        .navbar-nav .nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background-color: var(--gold-accent); transition: width 0.3s ease-out; }
+        .navbar-nav .nav-link:hover::after, .navbar-nav .nav-link.active::after { width: 70%; }
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--gold-accent) !important; }
+        .btn-gold-nav { background-color: var(--gold-accent); border-color: var(--gold-accent); color: var(--dark-bg); font-weight: bold; padding: 0.5rem 1rem; transition: all 0.3s ease; }
+        .btn-gold-nav:hover { background-color: #c09e32; color: var(--dark-bg); transform: scale(1.05); }
+
+        .btn-gold {
+            background-color: var(--gold-accent);
+            border-color: var(--gold-accent);
+            color: var(--dark-bg);
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            background-color: #c09e32;
+            border-color: #c09e32;
+            color: var(--dark-bg);
+            transform: scale(1.05);
+        }
+        .text-gold-accent { color: var(--gold-accent); }
+        .fade-in-section { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* Plan Detail Specific Styles (Reused) */
+        .plan-hero {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px; /* Adjust for fixed navbar */
+        }
+        .plan-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 0;
+        }
+        .plan-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .plan-details-card {
+            background-color: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+        
+        /* New Contact Page Specific Styles */
+        .map-iframe {
+            border: 0;
+            width: 100%;
+            height: 450px; /* Default height for map */
+            border-radius: 10px;
+            filter: invert(90%) hue-rotate(180deg); /* Dark mode map */
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start; /* Align icon to top */
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-info-item i {
+            font-size: 1.5rem;
+            color: var(--gold-accent);
+            width: 40px; /* To align text */
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .form-control {
+             background-color: #2a2a2a;
+             border: 1px solid var(--dark-border);
+             color: var(--light-text);
+        }
+        .form-control:focus {
+            background-color: #3a3a3a;
+            border-color: var(--gold-accent);
+            color: var(--light-text);
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+        }
+        .form-control::placeholder {
+            color: #6c757d;
+        }
+        .form-label {
+            color: var(--light-text);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- === NAVBAR === -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="main-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2" onerror="this.style.display='none'">
+                Fullstack Gym
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="membership.html">Membership</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item" id="login-nav-item">
+                        <a class="nav-link" target="_self" href="login.html">
+                            <img src="account.png" alt="Login" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;" onerror="this.style.display='none'">Login
+                        </a>
+                    </li>
+                    <li class="nav-item d-none d-lg-block ms-3">
+                        <a href="membership.html" id="nav-cta-btn" class="btn btn-gold-nav d-none">Join Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- === HERO SECTION === -->
+    <div class="plan-hero" style="background-image: url('https://images.unsplash.com/photo-1517836357463-d2611c3382f6?auto=format&fit=crop&w=1920&q=80');">
+        <div class="plan-hero-overlay"></div>
+        <div class="plan-hero-content container">
+            <h1 class="display-3 fw-bold"><span class="text-gold-accent">Get In</span> Touch</h1>
+            <p class="lead col-lg-8 mx-auto fs-4 my-4">
+                We're here to help. Reach out with any questions or feedback.
+            </p>
+        </div>
+    </div>
+
+    <!-- === CONTENT SECTION === -->
+    <div class="container my-5 py-5 fade-in-section">
+        <div class="row g-5">
+
+            <!-- Column 1: Contact Info & Form -->
+            <div class="col-lg-6">
+                <div class="plan-details-card h-100">
+                    <h2 class="text-gold-accent mb-4">Contact Information</h2>
+                    
+                    <div class="contact-info-item">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Bennett University, Uttar Pradesh 201301</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="bi bi-telephone-fill"></i>
+                        <span>+91 9368465550</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="bi bi-envelope-fill"></i>
+                        <span>abhaynarayan0001@gmail.com</span>
+                    </div>
+
+                    <hr class="border-secondary my-4">
+
+                    <h2 class="text-gold-accent mb-4">Send Us a Message</h2>
+                    
+                    <form action="https://formsubmit.co/abhaynarayan0001@gmail.com" method="POST" id="contact-form">
+                        <input type="hidden" name="_subject" value="New Contact Message from Fullstack Gym">
+
+                        <div class="mb-3">
+                            <label for="contactName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="contactName" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label">Your Email</label>
+                            <input type="email" class="form-control" id="contactEmail" name="email" placeholder="name@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactSubject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="contactSubject" name="subject" placeholder="Membership Inquiry" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label">Your Message</label>
+                            <textarea class="form-control" id="contactMessage" name="message" rows="5" placeholder="Your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-gold btn-lg" id="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Column 2: Map -->
+            <div class="col-lg-6">
+                <div class="plan-details-card h-100">
+                     <h2 class="text-gold-accent mb-4">Find Us Here</h2>
+                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.959193395863!2d77.58162287535151!3d28.450646475764515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cbf94deb6bc39%3A0x7ba6bedc9a2b537f!2sBennett%20University!5e0!3m2!1sen!2sin!4v1763045272369!5m2!1sen!2sin" 
+                      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+                        class="map-iframe" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <p class="text-white-50 mt-3">
+                        <strong>Hours:</strong><br>
+                        Monday - Friday: 5:00 AM - 11:00 PM<br>
+                        Saturday - Sunday: 7:00 AM - 9:00 PM
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- === FOOTER === -->
+    <footer class="mt-auto bg-dark text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <a href="#" class="mb-3 d-inline-block">
+                        <img src="logo.png" alt="Logo" style="width: 100px; height: 100px; background-color: white; border-radius: 50%; padding: 10px;" onerror="this.style.display='none'">
+                    </a>
+                    <div class="mt-3">
+                        <a href="#" class="text-white text-decoration-none me-3"><i class="bi bi-instagram fs-4"></i></a>
+                        <a href="#" class="text-white text-decoration-none me-3"><i class="bi bi-twitter fs-4"></i></a>
+                        <a href="#" class="text-white text-decoration-none me-3"><i class="bi bi-linkedin fs-4"></i></a>
+                        <a href="#" class="text-white text-decoration-none"><i class="bi bi-facebook fs-4"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">Quick Links</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="about.html" class="text-white text-decoration-none">About</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">FAQs</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-white text-decoration-none">Refund & Cancellation</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-white text-decoration-none">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-12 col-lg-6 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-3 d-flex">
+                            <i class="bi bi-geo-alt-fill me-3"></i>
+                            <span>Bennett University, Uttar Pradesh 201301</span>
+                        </li>
+                        <li class="mb-3 d-flex">
+                            <i class="bi bi-telephone-fill me-3"></i>
+                            <span>+91 9368465XXX</span>
+                        </li>
+                        <li class="mb-3 d-flex">
+                            <i class="bi bi-envelope-fill me-3"></i>
+                            <span>abhaynarayan0001@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        const serverUrl = 'http://localhost:3001'; 
+
+        // === SCRIPT 1: SERVER-BASED LOGIN/LOGOUT STATUS ===
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginNavItem = document.getElementById('login-nav-item');
+
+            fetch(`${serverUrl}/check-auth`, {
+                method: 'GET',
+                credentials: 'include' 
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Not logged in');
+            })
+            .then(data => {
+                loginNavItem.innerHTML = `
+                    <a id="logout-link" class="nav-link" href="#" style="cursor: pointer;">
+                        <img src="account.png" alt="Logout" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;">
+                        Logout (${data.username})
+                    </a>
+                `;
+                
+                document.getElementById('logout-link').addEventListener('click', (event) => {
+                    event.preventDefault();
+                    fetch(`${serverUrl}/logout`, { method: 'POST', credentials: 'include' })
+                    .then(() => window.location.href = 'login.html')
+                    .catch(err => console.error('Logout failed:', err));
+                });
+            })
+            .catch(error => {
+                console.log('User is not authenticated.');
+            });
+        });
+
+        // === SCRIPT 2: NAVBAR SCROLL ===
+        document.addEventListener('scroll', () => {
+            const navbar = document.getElementById('main-navbar');
+            const navCtaBtn = document.getElementById('nav-cta-btn');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+                if (navCtaBtn) navCtaBtn.classList.remove('d-none');
+            } else {
+                navbar.classList.remove('scrolled');
+                if (navCtaBtn) navCtaBtn.classList.add('d-none');
+            }
+        });
+
+        // === SCRIPT 3: FADE IN ANIMATIONS ===
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => observer.observe(section));
+        });
+
+        // === NEW SCRIPT 4: PROTECTED FORM SUBMISSION ===
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contact-form');
+            const submitButton = document.getElementById('submit-button');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', async (event) => {
+                    event.preventDefault();
+
+                    // --- STEP 1: CHECK AUTHENTICATION ---
+                    try {
+                        const authResponse = await fetch(`${serverUrl}/check-auth`, { 
+                            method: 'GET', 
+                            credentials: 'include' 
+                        });
+
+                        if (!authResponse.ok) {
+                            // Not logged in? Redirect to login
+                            alert("Please log in to send a message.");
+                            window.location.href = 'login.html';
+                            return;
+                        }
+                    } catch (e) {
+                        console.error("Auth check failed", e);
+                        return; // Stop if server error
+                    }
+
+                    // --- STEP 2: PROCEED WITH SUBMISSION (User is Logged In) ---
+                    if (submitButton) {
+                        submitButton.textContent = 'Sending...';
+                        submitButton.disabled = true;
+                    }
+
+                    const formData = new FormData(contactForm);
+
+                    try {
+                        const response = await fetch(contactForm.action, {
+                            method: contactForm.method,
+                            body: formData,
+                            headers: { 'Accept': 'application/json' }
+                        });
+
+                        if (response.ok) {
+                            window.location.href = 'thank-you.html';
+                        } else {
+                            throw new Error('Form submission failed.');
+                        }
+                    } catch (error) {
+                        console.error('Submission Error:', error);
+                        const errorBox = document.createElement('div');
+                        errorBox.style.cssText = `position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background-color: #dc3545; color: white; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-size: 1.1rem; z-index: 1050;`;
+                        errorBox.textContent = 'Error: Could not send message. Please try again.';
+                        document.body.appendChild(errorBox);
+                        setTimeout(() => errorBox.remove(), 4000);
+
+                        if (submitButton) {
+                            submitButton.textContent = 'Send Message';
+                            submitButton.disabled = false;
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

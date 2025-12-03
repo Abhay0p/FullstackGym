@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Fullstack Gym</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        :root {
+            --dark-bg: #121212;
+            --dark-card: #1e1e1e;
+            --dark-border: #333;
+            --gold-accent: #d4af37;
+            --light-text: #f0f0f0;
+        }
+        
+        body { background-color: var(--dark-bg); color: var(--light-text); }
+        .navbar { transition: background-color 0.4s ease-out; padding-top: 1rem; padding-bottom: 1rem; }
+        .navbar.scrolled { background-color: var(--dark-bg) !important; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); }
+        .navbar-brand { font-weight: bold; font-size: 1.5rem; color: var(--gold-accent) !important; }
+        .navbar-nav .nav-link { position: relative; padding-bottom: 0.5rem; transition: color 0.3s ease; }
+        .navbar-nav .nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background-color: var(--gold-accent); transition: width 0.3s ease-out; }
+        .navbar-nav .nav-link:hover::after, .navbar-nav .nav-link.active::after { width: 70%; }
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--gold-accent) !important; }
+        .btn-gold-nav { background-color: var(--gold-accent); border-color: var(--gold-accent); color: var(--dark-bg); font-weight: bold; padding: 0.5rem 1rem; transition: all 0.3s ease; }
+        .btn-gold-nav:hover { background-color: #c09e32; color: var(--dark-bg); transform: scale(1.05); }
+
+        .btn-gold {
+            background-color: var(--gold-accent);
+            border-color: var(--gold-accent);
+            color: var(--dark-bg);
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            background-color: #c09e32;
+            border-color: #c09e32;
+            color: var(--dark-bg);
+            transform: scale(1.05);
+        }
+        .text-gold-accent { color: var(--gold-accent); }
+
+        /* Simple hero for the thank you page */
+        .thank-you-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 50vh;
+            padding-top: 100px;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- === NAVBAR === -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="main-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2" onerror="this.style.display='none'">
+                Fullstack Gym
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="membership.html">Membership</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item" id="login-nav-item">
+                        <a class="nav-link" target="_self" href="login.html">
+                            <img src="account.png" alt="Login" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;" onerror="this.style.display='none'">Login
+                        </a>
+                    </li>
+                    <li class="nav-item d-none d-lg-block ms-3">
+                        <a href="membership.html" id="nav-cta-btn" class="btn btn-gold-nav d-none">Join Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- === CONTENT SECTION (New Content) === -->
+    <div class="container thank-you-hero">
+        <div class="col-lg-8 mx-auto">
+            <i class="bi bi-check-circle-fill text-gold-accent" style="font-size: 5rem;"></i>
+            <h1 class="display-3 fw-bold mt-4">Thank You!</h1>
+            <p class="lead fs-4 my-4 text-white-50">
+                Your message has been sent. We'll get back to you as soon as possible.
+            </p>
+            <a href="index.html" class="btn btn-gold btn-lg">Back to Home</a>
+        </div>
+    </div>
+    
+    <footer class="mt-auto bg-dark text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <a href="#" class="mb-3 d-inline-block">
+                        <img src="logo.png" alt="Logo" style="width: 100px; height: 100px; background-color: white; border-radius: 50%; padding: 10px;">
+                    </a>
+                    <div class="mt-3">
+                        <a href="https://www.instagram.com/abhay_0p_/" class="text-white text-decoration-none me-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.917 3.917 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.703.01 5.556 0 5.829 0 8s.01 2.444.048 3.297c.04.852.174 1.433.372 1.942.205.52.478.972.923 1.417.444.445.896.719 1.417.923.509.198 1.09.333 1.942.372C5.556 15.99 5.829 16 8 16s2.444-.01 3.297-.048c.852-.04 1.433-.174 1.942-.372.52-.205.972-.478 1.417-.923.445-.444.719-.896.923-1.417.198-.509.333-1.09.372-1.942C15.99 10.444 16 10.171 16 8s-.01-2.444-.048-3.297c-.04-.852-.174-1.433-.372-1.942A3.917 3.917 0 0 0 13.24.42 3.917 3.917 0 0 0 11.8.048C10.95.01 10.671 0 8 0zm0 1.44C10.114 1.44 10.383 1.452 11.2 1.48c.813.028 1.25.166 1.618.31.43.17.743.386 1.062.705.318.318.536.63.705 1.062.145.368.282.805.31 1.618.028.817.04 1.086.04 3.2 0 2.114-.012 2.383-.04 3.2-.028.813-.166 1.25-.31 1.618-.17.43-.386.743-.705 1.062-.318.318-.63.536-1.062.705-.368.145-.805.282-1.618.31-.817.028-1.086.04-3.2.04-2.114 0-2.383-.012-3.2-.04-.813-.028-1.25-.166-1.618-.31-.43-.17-.743-.386-1.062-.705-.318.318-.63.536-1.062.705-.145-.368-.282-.805-.31-1.618-.028-.817-.04-1.086-.04-3.2 0-2.114.012 2.383.04-3.2.028-.813.166 1.25.31-1.618.17-.43.386.743.705-1.062.318.318.63.536 1.062.705.368-.145.805.282 1.618.31.817.028 1.086.04 3.2.04zM8 4.132a3.868 3.868 0 1 0 0 7.736 3.868 3.868 0 0 0 0-7.736zm0 6.276a2.408 2.408 0 1 1 0-4.816 2.408 2.408 0 0 1 0 4.816zM13.868 3.713a.904.904 0 1 1-1.808 0 .904.904 0 0 1 1.808 0z"/>
+                            </svg>
+                        </a>
+                        <a href="https://x.com/Abhay0p" class="text-white text-decoration-none me-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .79 13.58a6.32 6.32 0 0 1-.75-.045 9.344 9.344 0 0 0 5.026 1.455z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/abhay-dubey-0p/" class="text-white text-decoration-none me-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.705-.52-1.248-1.342-1.248-.822 0-1.359.543-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                            </svg>
+                        </a>
+                        <a href="http://facebook.com" class="text-white text-decoration-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0 0 3.604 0 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Quick Links
+                    </h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2">
+                            <a href="about.html" class="text-white text-decoration-none">About</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-white text-decoration-none">FAQs</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-white text-decoration-none">Privacy Policy</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-white text-decoration-none">Refund & Cancellation</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="contact.html" class="text-white text-decoration-none">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-12 col-lg-6 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Contact
+                    </h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-3 d-flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill me-3" viewBox="0 0 16 16" style="flex-shrink: 0; margin-top: 5px;">
+                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                            </svg>
+                            <span>Bennett University, Uttar Pradesh 201301</span>
+                        </li>
+                        <li class="mb-3 d-flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill me-3" viewBox="0 0 16 16" style="flex-shrink: 0; margin-top: 5px;">
+                                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.363-1.03-.038-2.137.703-2.877L1.885.511z"/>
+                            </svg>
+                            <span>+91 93684655000</span> 
+                        </li>
+                        <li class="mb-3 d-flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill me-3" viewBox="0 0 16 16" style="flex-shrink: 0; margin-top: 5px;">
+                                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.803V4.697l-5.803 3.546z"/>
+                            </svg>
+                            <span>abhaynarayan0001@gmail.com</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-4">
+                        <a href="#" class="me-2">
+                            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" style="height: 50px;">
+                        </a>
+                       
+                    </div>
+                </div>
+            </div>
+            
+            </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+// === SCRIPT 1: (NEW) SERVER-BASED LOGIN/LOGOUT STATUS ===
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const loginNavItem = document.getElementById('login-nav-item');
+    const serverUrl = 'http://localhost:3001'; // Your server's URL
+
+    // 1. Check with the server to see if we are *actually* logged in
+    fetch(`${serverUrl}/check-auth`, {
+        method: 'GET',
+        credentials: 'include' // This is VITAL - it sends the session cookie
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // We are logged in!
+        }
+        throw new Error('Not logged in'); // We are not logged in
+    })
+    .then(data => {
+        // --- USER IS LOGGED IN ---
+        // 'data.username' comes from the server
+        loginNavItem.innerHTML = `
+            <a id="logout-link" class="nav-link" href="#" style="cursor: pointer;">
+                <img src="account.png" alt="Logout" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;">
+                Logout (${data.username})
+            </a>
+        `;
+        
+        // Add click event to the new logout link
+        document.getElementById('logout-link').addEventListener('click', (event) => {
+            event.preventDefault();
+            
+            // Call the server's /logout route
+            fetch(`${serverUrl}/logout`, {
+                method: 'POST',
+                credentials: 'include'
+            })
+            .then(() => {
+                // After successful logout, redirect to login
+                window.location.href = 'login.html'; 
+            })
+            .catch(err => console.error('Logout failed:', err));
+        });
+    })
+    .catch(error => {
+        // --- USER IS NOT LOGGED IN ---
+        // Keep the default "Login" button
+        console.log('User is not authenticated.');
+        loginNavItem.innerHTML = `
+            <a class="nav-link" target="_self" href="login.html">
+                <img src="account.png" alt="Login" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;">Login
+            </a>
+        `;
+    });
+});
+        // === SCRIPT 2: NAVBAR SCROLL & CTA BUTTON (All pages) ===
+        document.addEventListener('scroll', () => {
+            const navbar = document.getElementById('main-navbar');
+            const navCtaBtn = document.getElementById('nav-cta-btn');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+                if (navCtaBtn) navCtaBtn.classList.remove('d-none');
+            } else {
+                navbar.classList.remove('scrolled');
+                if (navCtaBtn) navCtaBtn.classList.add('d-none');
+            }
+        });
+
+        // === SCRIPT 3: SCROLL FADE-IN ANIMATIONS (All pages) ===
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.fade-in-section');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

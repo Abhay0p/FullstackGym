@@ -4,100 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Fullstack Gym</title>
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <style>
-        :root {
-            --dark-bg: #121212;
-            --dark-card: #1e1e1e;
-            --dark-border: #333;
-            --gold-accent: #d4af37;
-            --light-text: #f0f0f0;
-        }
-        
+        :root { --dark-bg: #121212; --dark-card: #1e1e1e; --dark-border: #333; --gold-accent: #d4af37; --light-text: #f0f0f0; }
         body { background-color: var(--dark-bg); color: var(--light-text); }
         .navbar { transition: background-color 0.4s ease-out; padding-top: 1rem; padding-bottom: 1rem; }
         .navbar.scrolled { background-color: var(--dark-bg) !important; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); }
         .navbar-brand { font-weight: bold; font-size: 1.5rem; color: var(--gold-accent) !important; }
         .navbar-nav .nav-link { position: relative; padding-bottom: 0.5rem; transition: color 0.3s ease; }
-        .navbar-nav .nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background-color: var(--gold-accent); transition: width 0.3s ease-out; }
-        .navbar-nav .nav-link:hover::after, .navbar-nav .nav-link.active::after { width: 70%; }
         .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--gold-accent) !important; }
-        
-        .btn-gold {
-            background-color: var(--gold-accent);
-            border-color: var(--gold-accent);
-            color: var(--dark-bg);
-            font-weight: bold;
-            padding: 0.75rem 1.5rem;
-            transition: all 0.3s ease;
-        }
-        .btn-gold:hover {
-            background-color: #c09e32;
-            color: var(--dark-bg);
-            transform: scale(1.05);
-        }
+        .btn-gold { background-color: var(--gold-accent); border-color: var(--gold-accent); color: var(--dark-bg); font-weight: bold; padding: 0.75rem 1.5rem; transition: all 0.3s ease; }
+        .btn-gold:hover { background-color: #c09e32; color: var(--dark-bg); transform: scale(1.05); }
         .text-gold-accent { color: var(--gold-accent); }
-        
-        /* Hero Section */
-        .plan-hero {
-            position: relative;
-            background-size: cover;
-            background-position: center;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding-top: 80px;
-        }
-        .plan-hero-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 0;
-        }
-        .plan-hero-content { position: relative; z-index: 1; }
-        
-        .plan-details-card {
-            background-color: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            border-radius: 15px;
-            padding: 3rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-        }
-        
-        .contact-info-item {
-            display: flex; align-items: flex-start;
-            font-size: 1.1rem; margin-bottom: 1.5rem;
-        }
-        .contact-info-item i {
-            font-size: 1.5rem; color: var(--gold-accent);
-            width: 40px; flex-shrink: 0; margin-top: 2px;
-        }
-        
-        .form-control {
-             background-color: #2a2a2a;
-             border: 1px solid var(--dark-border);
-             color: var(--light-text);
-        }
-        .form-control:focus {
-            background-color: #3a3a3a;
-            border-color: var(--gold-accent);
-            color: var(--light-text);
-            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
-        }
-        
-        /* Map Style */
-        .map-iframe {
-            border: 0; width: 100%; height: 450px; border-radius: 10px;
-            filter: invert(90%) hue-rotate(180deg);
-        }
+        .plan-hero { position: relative; background-size: cover; background-position: center; height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding-top: 80px; }
+        .plan-details-card { background-color: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 15px; padding: 3rem; box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+        .form-control { background-color: #2a2a2a; border: 1px solid var(--dark-border); color: var(--light-text); }
+        .form-control:focus { background-color: #3a3a3a; border-color: var(--gold-accent); color: var(--light-text); box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25); }
+        .map-iframe { border: 0; width: 100%; height: 450px; border-radius: 10px; filter: invert(90%) hue-rotate(180deg); }
     </style>
 
     <script src="js/guard.js"></script>
@@ -110,9 +36,7 @@
                 <img src="logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2" onerror="this.style.display='none'">
                 Fullstack Gym
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                     <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
@@ -121,7 +45,7 @@
                     <li class="nav-item"><a class="nav-link active" href="contact.html">Contact Us</a></li>
                     <li class="nav-item" id="login-nav-item">
                         <a class="nav-link" href="login.html">
-                            <img src="account.png" alt="Login" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;" onerror="this.style.display='none'">Login
+                            <img src="account.png" alt="Login" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;">Login
                         </a>
                     </li>
                 </ul>
@@ -130,121 +54,74 @@
     </nav>
 
     <div class="plan-hero" style="background-image: url('https://images.unsplash.com/photo-1517836357463-d2611c3382f6?auto=format&fit=crop&w=1920&q=80');">
-        <div class="plan-hero-overlay"></div>
-        <div class="plan-hero-content container">
+        <div class="plan-hero-overlay" style="position: absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.7);"></div>
+        <div class="plan-hero-content container" style="position: relative; z-index: 1;">
             <h1 class="display-3 fw-bold"><span class="text-gold-accent">Get In</span> Touch</h1>
-            <p class="lead col-lg-8 mx-auto fs-4 my-4">We're here to help. Reach out with any questions or feedback.</p>
+            <p class="lead col-lg-8 mx-auto fs-4 my-4">We're here to help.</p>
         </div>
     </div>
 
     <div class="container my-5 py-5">
         <div class="row g-5">
-
             <div class="col-lg-6">
                 <div class="plan-details-card h-100">
                     <h2 class="text-gold-accent mb-4">Contact Information</h2>
-                    
-                    <div class="contact-info-item">
-                        <i class="bi bi-geo-alt-fill"></i>
-                        <span>Bennett University, Uttar Pradesh 201301</span>
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="bi bi-telephone-fill"></i>
-                        <span>+91 9368465XXX</span>
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="bi bi-envelope-fill"></i>
-                        <span>abhaynarayan0001@gmail.com</span>
-                    </div>
-
+                    <div class="contact-info-item mb-3"><i class="bi bi-geo-alt-fill text-gold-accent me-2"></i><span>Bennett University, UP</span></div>
+                    <div class="contact-info-item mb-3"><i class="bi bi-envelope-fill text-gold-accent me-2"></i><span>abhaynarayan0001@gmail.com</span></div>
                     <hr class="border-secondary my-4">
-
                     <h2 class="text-gold-accent mb-4">Send Us a Message</h2>
-                    
                     <form id="contact-form">
-                        <div class="mb-3">
-                            <label for="contactName" class="form-label">Your Name</label>
-                            <input type="text" class="form-control" id="contactName" name="name" placeholder="John Doe" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="contactEmail" class="form-label">Your Email</label>
-                            <input type="email" class="form-control" id="contactEmail" name="email" placeholder="name@example.com" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="contactSubject" class="form-label">Subject</label>
-                            <input type="text" class="form-control" id="contactSubject" name="subject" placeholder="Membership Inquiry" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="contactMessage" class="form-label">Your Message</label>
-                            <textarea class="form-control" id="contactMessage" name="message" rows="5" placeholder="Your message here..." required></textarea>
-                        </div>
+                        <div class="mb-3"><input type="text" class="form-control" name="name" placeholder="Your Name" required></div>
+                        <div class="mb-3"><input type="email" class="form-control" name="email" placeholder="Your Email" required></div>
+                        <div class="mb-3"><textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea></div>
                         <button type="submit" class="btn btn-gold btn-lg" id="submit-button">Send Message</button>
                     </form>
                 </div>
             </div>
-
             <div class="col-lg-6">
                 <div class="plan-details-card h-100">
                       <h2 class="text-gold-accent mb-4">Find Us Here</h2>
-                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.160161474274!2d77.51268631507963!3d28.45492498248821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cc1d50d03d36d%3A0x6b80302283075678!2sBennett%20University!5e0!3m2!1sen!2sin!4v1642158864197!5m2!1sen!2sin" 
-                        class="map-iframe" allowfullscreen="" loading="lazy"></iframe>
-                    <p class="text-white-50 mt-3">
-                        <strong>Hours:</strong><br>
-                        Mon - Fri: 5:00 AM - 11:00 PM<br>
-                        Sat - Sun: 7:00 AM - 9:00 PM
-                    </p>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.160161474274!2d77.51268631507963!3d28.45492498248821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cc1d50d03d36d%3A0x6b80302283075678!2sBennett%20University!5e0!3m2!1sen!2sin!4v1642158864197!5m2!1sen!2sin" class="map-iframe" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
     </div>
     
-    <footer class="mt-auto bg-dark text-white pt-5 pb-4">
-        <div class="container">
-            <p class="text-center text-muted">© 2024 Fullstack Gym. All Rights Reserved.</p>
-        </div>
-    </footer>
-
+    <footer class="mt-auto bg-dark text-white pt-5 pb-4"><div class="container text-center">© 2024 Fullstack Gym.</div></footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         // --- 1. CONFIGURATION (EmailJS) ---
-        // IMPORTANT: Replace these with your actual keys from EmailJS Dashboard
         const EMAILJS_PUBLIC_KEY = "M-k8xjfPnTd8IA4JK"; 
         const EMAILJS_SERVICE_ID = "service_xeocete";
         const EMAILJS_TEMPLATE_ID = "template_4d7ih5d";
 
-        // --- 2. INITIALIZE EMAILJS ---
-        (function(){
-            emailjs.init(EMAILJS_PUBLIC_KEY);
-        })();
+        (function(){ emailjs.init(EMAILJS_PUBLIC_KEY); })();
 
-        // --- 3. HANDLE NAVBAR SCROLL (UI Only) ---
+        // --- 2. HANDLE NAVBAR SCROLL ---
         document.addEventListener('scroll', () => {
             const navbar = document.getElementById('main-navbar');
             if (window.scrollY > 50) navbar.classList.add('scrolled');
             else navbar.classList.remove('scrolled');
         });
 
-        // --- 4. HANDLE FORM SUBMISSION ---
+        // --- 3. HANDLE FORM SUBMISSION ---
         const contactForm = document.getElementById('contact-form');
         const submitButton = document.getElementById('submit-button');
 
         if (contactForm) {
             contactForm.addEventListener('submit', function(event) {
-                event.preventDefault(); // Stop page reload
-
-                // UI Loading State
+                event.preventDefault();
                 const originalText = submitButton.innerText;
                 submitButton.innerText = 'Sending...';
                 submitButton.disabled = true;
 
-                // Send via EmailJS
                 emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
                     .then(function() {
                         alert('Message Sent Successfully!');
-                        window.location.href = 'thank-you.html'; // Redirect on success
+                        window.location.href = 'thank-you.html'; 
                     }, function(error) {
-                        alert('Failed to send message: ' + JSON.stringify(error));
+                        alert('Failed: ' + JSON.stringify(error));
                         submitButton.innerText = originalText;
                         submitButton.disabled = false;
                     });

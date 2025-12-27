@@ -1,3 +1,4 @@
+// js/guard.js - FRONTEND ONLY
 document.addEventListener("DOMContentLoaded", function() {
     // 1. SELECTORS
     const token = localStorage.getItem('token');
@@ -7,23 +8,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 2. SECURITY CHECK (The Bouncer)
     if (!token) {
-        // If no token, redirect to login immediately
-        window.location.href = 'login.html';
-        return; // Stop the script here
+        // If we are NOT on the login/register page, kick them out
+        const currentPage = window.location.pathname;
+        if (!currentPage.includes('login.html') && !currentPage.includes('register.html')) {
+             window.location.href = 'login.html';
+             return;
+        }
     }
 
-    // 3. REVEAL PAGE (The Curtain)
-    // If we passed the check above, show the page content
+    // 3. REVEAL PAGE
     if (body) {
         body.style.display = 'block'; 
     }
 
-    // 4. UPDATE NAVBAR (The UI)
-    if (loginNavItem) {
-        // Extract name from email (e.g., "abhay" from "abhay@gmail.com")
+    // 4. UPDATE NAVBAR (Login -> Logout)
+    if (loginNavItem && token) {
         const displayName = userEmail ? userEmail.split('@')[0] : 'Member';
 
-        // Swap "Login" link with "Logout" link
         loginNavItem.innerHTML = `
             <a id="logout-link" class="nav-link" href="#" style="cursor: pointer;">
                 <img src="account.png" alt="Logout" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;">
@@ -31,17 +32,12 @@ document.addEventListener("DOMContentLoaded", function() {
             </a>
         `;
 
-        // Add the click event to the new Logout button
+        // Attach Logout Event
         document.getElementById('logout-link').addEventListener('click', (e) => {
-            e.preventDefault(); // Stop it from jumping to top of page
-            logout();
+            e.preventDefault();
+            localStorage.removeItem('token');
+            localStorage.removeItem('userEmail');
+            window.location.href = 'login.html';
         });
     }
 });
-
-// GLOBAL LOGOUT FUNCTION
-function logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userEmail');
-    window.location.href = 'login.html';
-}

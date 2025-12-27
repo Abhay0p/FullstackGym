@@ -180,7 +180,7 @@
     </style>
     <script src="js/guard.js"></script>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body style="display: none;" class="d-flex flex-column min-vh-100">
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="main-navbar">
         <div class="container">
@@ -485,60 +485,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
- // === SCRIPT 1: (NEW) SERVER-BASED LOGIN/LOGOUT STATUS ===
-document.addEventListener('DOMContentLoaded', () => {
-    
-    const loginNavItem = document.getElementById('login-nav-item');
-    const serverUrl = 'https://fullstackgym.onrender.com'; // Your server's URL
-
-    // 1. Check with the server to see if we are *actually* logged in
-    fetch(`${serverUrl}/check-auth`, {
-        method: 'GET',
-        credentials: 'include' // This is VITAL - it sends the session cookie
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json(); // We are logged in!
-        }
-        throw new Error('Not logged in'); // We are not logged in
-    })
-    .then(data => {
-        // --- USER IS LOGGED IN ---
-        // 'data.username' comes from the server
-        loginNavItem.innerHTML = `
-            <a id="logout-link" class="nav-link" href="#" style="cursor: pointer;">
-                <img src="account.png" alt="Logout" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;">
-                Logout (${data.username})
-            </a>
-        `;
-        
-        // Add click event to the new logout link
-        document.getElementById('logout-link').addEventListener('click', (event) => {
-            event.preventDefault();
-            
-            // Call the server's /logout route
-            fetch(`${serverUrl}/logout`, {
-                method: 'POST',
-                credentials: 'include'
-            })
-            .then(() => {
-                // After successful logout, redirect to login
-                window.location.href = 'login.html'; 
-            })
-            .catch(err => console.error('Logout failed:', err));
-        });
-    })
-    .catch(error => {
-        // --- USER IS NOT LOGGED IN ---
-        // Keep the default "Login" button
-        console.log('User is not authenticated.');
-        loginNavItem.innerHTML = `
-            <a class="nav-link" target="_self" href="login.html">
-                <img src="account.png" alt="Login" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;">Login
-            </a>
-        `;
-    });
-});
         // === SCRIPT 2: NAVBAR SCROLL & CTA BUTTON (All pages) ===
         document.addEventListener('scroll', () => {
             const navbar = document.getElementById('main-navbar');

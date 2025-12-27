@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ELITE - Fullstack Gym</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <style>
@@ -24,6 +24,7 @@
         .navbar-nav .nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background-color: var(--gold-accent); transition: width 0.3s ease-out; }
         .navbar-nav .nav-link:hover::after, .navbar-nav .nav-link.active::after { width: 70%; }
         .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--gold-accent) !important; }
+        
         .btn-gold-nav { background-color: var(--gold-accent); border-color: var(--gold-accent); color: var(--dark-bg); font-weight: bold; padding: 0.5rem 1rem; transition: all 0.3s ease; }
         .btn-gold-nav:hover { background-color: #c09e32; color: var(--dark-bg); transform: scale(1.05); }
 
@@ -60,17 +61,11 @@
         }
         .plan-hero-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background-color: rgba(0, 0, 0, 0.7);
             z-index: 0;
         }
-        .plan-hero-content {
-            position: relative;
-            z-index: 1;
-        }
+        .plan-hero-content { position: relative; z-index: 1; }
         .plan-details-card {
             background-color: var(--dark-card);
             border: 1px solid var(--dark-border);
@@ -78,34 +73,21 @@
             padding: 3rem;
             box-shadow: 0 10px 20px rgba(0,0,0,0.4);
         }
-        .feature-list {
-            list-style: none;
-            padding: 0;
-        }
+        .feature-list { list-style: none; padding: 0; }
         .feature-list li {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 1.8rem;
+            font-size: 1.1rem; margin-bottom: 0.8rem; position: relative; padding-left: 1.8rem;
         }
         .feature-list li::before {
             content: "\f26a"; /* Bootstrap icon check-circle-fill */
             font-family: 'bootstrap-icons';
             color: var(--gold-accent);
-            position: absolute;
-            left: 0;
-            top: 2px;
+            position: absolute; left: 0; top: 2px;
         }
         .price-display {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: var(--gold-accent);
-            line-height: 1;
+            font-size: 3.5rem; font-weight: bold; color: var(--gold-accent); line-height: 1;
         }
         .price-display small {
-            font-size: 1.2rem;
-            color: var(--light-text);
-            font-weight: normal;
+            font-size: 1.2rem; color: var(--light-text); font-weight: normal;
         }
         .plan-option-card {
             background-color: #2a2a2a;
@@ -124,34 +106,26 @@
     </style>
     <script src="js/guard.js"></script>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body style="display: none;" class="d-flex flex-column min-vh-100">
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="main-navbar">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
+                <img src="logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2" onerror="this.style.display='none'">
                 Fullstack Gym
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="services.html">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="membership.html">Membership</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact Us</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="membership.html">Membership</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
                     <li class="nav-item" id="login-nav-item">
-                        <a class="nav-link" target="_self" href="login.html">
-                            <img src="account.png" alt="Login" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;">Login
+                        <a class="nav-link" href="login.html">
+                            <img src="account.png" alt="Login" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;" onerror="this.style.display='none'">Login
                         </a>
                     </li>
                     <li class="nav-item d-none d-lg-block ms-3">
@@ -162,7 +136,7 @@
         </div>
     </nav>
 
-    <div class="plan-hero" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300d4949?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');">
+    <div class="plan-hero" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300d4949?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80');">
         <div class="plan-hero-overlay"></div>
         <div class="plan-hero-content container">
             <h1 class="display-3 fw-bold"><span class="text-gold-accent">ELITE</span> </h1>
@@ -180,13 +154,13 @@
                         <div class="col-md-6">
                             <h2 class="text-gold-accent mb-4">The Ultimate Fitness Experience</h2>
                             <p class="text-white-50 fs-5">
-                                cultpass ELITE is designed for those who demand the absolute best in fitness flexibility and variety. With this pass, your fitness journey knows no bounds, offering unparalleled access to our premium facilities and programs.
+                                cultpass ELITE is designed for those who demand the absolute best in fitness flexibility and variety. With this pass, your fitness journey knows no bounds.
                             </p>
                             <ul class="feature-list mt-4">
                                 <li>Unlimited access to all ELITE & PRO Fullstack Gym centers.</li>
-                                <li>Unlimited at-center group classes (HIIT, Strength, Yoga, Dance, etc.).</li>
+                                <li>Unlimited at-center group classes (HIIT, Strength, Yoga, etc.).</li>
                                 <li>Unlimited at-home live workouts with expert instructors.</li>
-                                <li>Priority booking for popular classes and personal training sessions.</li>
+                                <li>Priority booking for popular classes.</li>
                                 <li>Exclusive member events and workshops.</li>
                             </ul>
                         </div>
@@ -204,13 +178,12 @@
                                     <div class="plan-option-card" data-price="299" data-duration="Annually">
                                         <h4 class="text-gold-accent mb-1">$299</h4>
                                         <p class="mb-0">/year</p>
-                                        <small class="text-white-50">Save 14% with annual billing!</small>
+                                        <small class="text-white-50">Save 14%!</small>
                                     </div>
                                 </div>
                             </div>
                             <div class="mt-5">
                                 <p class="price-display mb-2" id="current-price">$29<small>/month</small></p>
-                                <!-- ADDED ID="join-plan-btn" for targeting -->
                                 <a href="#" class="btn btn-gold btn-lg" id="join-plan-btn">Join ELITE Now</a>
                                 <p class="text-white-50 mt-3 mb-0">Cancel anytime. 7-day money-back guarantee.</p>
                             </div>
@@ -229,90 +202,45 @@
                         <img src="logo.png" alt="Logo" style="width: 100px; height: 100px; background-color: white; border-radius: 50%; padding: 10px;">
                     </a>
                     <div class="mt-3">
-                        <a href="#" class="text-white text-decoration-none me-3"><i class="bi bi-instagram fs-4"></i></a>
-                        <a href="#" class="text-white text-decoration-none me-3"><i class="bi bi-twitter fs-4"></i></a>
-                        <a href="#" class="text-white text-decoration-none me-3"><i class="bi bi-linkedin fs-4"></i></a>
-                        <a href="#" class="text-white text-decoration-none"><i class="bi bi-facebook fs-4"></i></a>
+                       <a href="#" class="text-white text-decoration-none me-3"><i class="bi bi-instagram fs-4"></i></a>
+                       <a href="#" class="text-white text-decoration-none"><i class="bi bi-twitter fs-4"></i></a>
                     </div>
                 </div>
-
                 <div class="col-md-6 col-lg-3 mb-4">
                     <h6 class="text-uppercase fw-bold mb-4">Quick Links</h6>
                     <ul class="list-unstyled mb-0">
                         <li class="mb-2"><a href="about.html" class="text-white text-decoration-none">About</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">FAQs</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
-                        <li class="mb-2"><a href="contact.html" class="text-white text-decoration-none">Refund & Cancellation</a></li>
                         <li class="mb-2"><a href="contact.html" class="text-white text-decoration-none">Contact Us</a></li>
                     </ul>
                 </div>
-
                 <div class="col-md-12 col-lg-6 mb-4">
                     <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
                     <ul class="list-unstyled mb-0">
-                        <li class="mb-3 d-flex"><i class="bi bi-geo-alt-fill me-3"></i><span>Bennett University, Uttar Pradesh 201301</span></li>
-                        <li class="mb-3 d-flex"><i class="bi bi-telephone-fill me-3"></i><span>+91 9368465550</span></li>
-                        <li class="mb-3 d-flex"><i class="bi bi-envelope-fill me-3"></i><span>abhaynarayan0001@gmail.com</span></li>
+                        <li class="mb-3 d-flex"><i class="bi bi-geo-alt-fill me-3"></i><span>Bennett University, UP</span></li>
+                        <li class="mb-3 d-flex"><i class="bi bi-envelope-fill me-3"></i><span>abhay@fullstackgym.com</span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        const serverUrl = 'https://fullstackgym.onrender.com';
-
-        // === SCRIPT 1: SERVER-BASED LOGIN/LOGOUT STATUS ===
-        document.addEventListener('DOMContentLoaded', () => {
-            const loginNavItem = document.getElementById('login-nav-item');
-
-            fetch(`${serverUrl}/check-auth`, {
-                method: 'GET',
-                credentials: 'include' 
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error('Not logged in');
-            })
-            .then(data => {
-                loginNavItem.innerHTML = `
-                    <a id="logout-link" class="nav-link" href="#" style="cursor: pointer;">
-                        <img src="account.png" alt="Logout" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;">
-                        Logout (${data.username})
-                    </a>
-                `;
-                
-                document.getElementById('logout-link').addEventListener('click', (event) => {
-                    event.preventDefault();
-                    fetch(`${serverUrl}/logout`, { method: 'POST', credentials: 'include' })
-                    .then(() => window.location.href = 'login.html')
-                    .catch(err => console.error('Logout failed:', err));
-                });
-            })
-            .catch(error => {
-                console.log('User is not authenticated.');
-            });
-        });
-
-        // === SCRIPT 2: NAVBAR SCROLL ===
+        // === NAVBAR SCROLL ===
         document.addEventListener('scroll', () => {
             const navbar = document.getElementById('main-navbar');
             const navCtaBtn = document.getElementById('nav-cta-btn');
-            
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
-                if (navCtaBtn) navCtaBtn.classList.remove('d-none');
+                if(navCtaBtn) navCtaBtn.classList.remove('d-none');
             } else {
                 navbar.classList.remove('scrolled');
-                if (navCtaBtn) navCtaBtn.classList.add('d-none');
+                if(navCtaBtn) navCtaBtn.classList.add('d-none');
             }
         });
 
-        // === SCRIPT 3: FADE ANIMATIONS ===
+        // === FADE ANIMATIONS ===
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.fade-in-section');
             const observer = new IntersectionObserver((entries) => {
@@ -326,19 +254,20 @@
             sections.forEach(section => observer.observe(section));
         });
 
-        // === SCRIPT 4: PLAN SELECTION & JOIN BUTTON GUARD (NEW) ===
+        // === PLAN SELECTION & JOIN BUTTON LOGIC ===
         document.addEventListener('DOMContentLoaded', () => {
             const planOptionCards = document.querySelectorAll('.plan-option-card');
             const currentPriceDisplay = document.getElementById('current-price');
             const joinButton = document.getElementById('join-plan-btn');
             
-            // Plan selection logic
+            // 1. Handle Monthly/Yearly Selection
             planOptionCards.forEach(card => {
                 card.addEventListener('click', () => {
                     planOptionCards.forEach(c => c.classList.remove('selected'));
                     card.classList.add('selected');
                     const price = card.dataset.price;
                     const duration = card.dataset.duration;
+                    
                     if (duration.toLowerCase() === 'annually') {
                         currentPriceDisplay.innerHTML = `$${price}<small>/year</small>`;
                     } else {
@@ -347,30 +276,21 @@
                 });
             });
 
-            // AUTH GUARD for "Join Now" button
+            // 2. Handle "Join Now" Button with Auth Check
             if (joinButton) {
-                joinButton.addEventListener('click', async (event) => {
-                    event.preventDefault(); // Prevent default link behavior
+                joinButton.addEventListener('click', (event) => {
+                    event.preventDefault(); 
                     
-                    try {
-                        const response = await fetch(`${serverUrl}/check-auth`, {
-                            method: 'GET',
-                            credentials: 'include'
-                        });
+                    // CHECK AUTH USING LOCALSTORAGE (INSTANT)
+                    const token = localStorage.getItem('token');
 
-                        if (response.ok) {
-                            // User IS logged in
-                            // Proceed to payment or next step
-                            alert("Logged in! Proceeding to secure checkout..."); 
-                            // window.location.href = 'checkout.html'; // Example redirect
-                        } else {
-                            // User is NOT logged in
-                            alert("Please log in to join a plan.");
-                            window.location.href = 'login.html';
-                        }
-                    } catch (error) {
-                        console.error("Error checking auth:", error);
-                        // Fallback safety
+                    if (token) {
+                        // User is logged in
+                        alert("🎉 You are logged in! Proceeding to Secure Checkout...");
+                        // In the future: window.location.href = 'payment.html';
+                    } else {
+                        // User is NOT logged in
+                        alert("🔒 Please log in to purchase a membership.");
                         window.location.href = 'login.html';
                     }
                 });

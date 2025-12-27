@@ -64,11 +64,12 @@
         .fade-in-section { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
     </style>
+    
     <script src="js/guard.js"></script>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body style="display: none;" class="d-flex flex-column min-vh-100">
 
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="main-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="main-navbar">
         <div class="container">
            <a class="navbar-brand" href="index.html">
                 <img src="logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2" onerror="this.style.display='none'">
@@ -215,7 +216,7 @@
                     <div class="mt-3">
                         <a href="https://www.instagram.com/abhay_0p_/" class="text-white text-decoration-none me-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
-                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.917 3.917 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.703.01 5.556 0 5.829 0 8s.01 2.444.048 3.297c.04.852.174 1.433.372 1.942.205.52.478.972.923 1.417.444.445.896.719 1.417.923.509.198 1.09.333 1.942.372C5.556 15.99 5.829 16 8 16s2.444-.01 3.297-.048c.852-.04 1.433-.174 1.942-.372.52-.205.972-.478 1.417-.923.445-.444.719-.896.923-1.417.198-.509.333-1.09.372-1.942C15.99 10.444 16 10.171 16 8s-.01-2.444-.048-3.297c-.04-.852-.174-1.433-.372-1.942A3.917 3.917 0 0 0 13.24.42 3.917 3.917 0 0 0 11.8.048C10.95.01 10.671 0 8 0zm0 1.44C10.114 1.44 10.383 1.452 11.2 1.48c.813.028 1.25.166 1.618.31.43.17.743.386 1.062.705.318.318.536.63.705 1.062.145.368.282.805.31 1.618.028.817.04 1.086.04 3.2 0 2.114-.012 2.383-.04 3.2-.028.813-.166 1.25-.31 1.618-.17.43-.386.743-.705 1.062-.318.318-.63.536-1.062.705-.368.145-.805.282-1.618.31-.817.028-1.086.04-3.2.04-2.114 0-2.383-.012-3.2-.04-.813-.028-1.25-.166-1.618-.31-.43-.17-.743-.386-1.062-.705-.318.318-.63.536-1.062.705-.145-.368-.282-.805-.31-1.618-.028-.817-.04-1.086-.04-3.2 0-2.114.012 2.383.04-3.2.028-.813.166 1.25.31-1.618.17-.43.386.743.705-1.062.318.318.63.536 1.062.705.368-.145.805.282 1.618.31.817.028 1.086.04 3.2.04zM8 4.132a3.868 3.868 0 1 0 0 7.736 3.868 3.868 0 0 0 0-7.736zm0 6.276a2.408 2.408 0 1 1 0-4.816 2.408 2.408 0 0 1 0 4.816zM13.868 3.713a.904.904 0 1 1-1.808 0 .904.904 0 0 1 1.808 0z"/>
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.917 3.917 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.703.01 5.556 0 5.829 0 8s.01 2.444.048 3.297c.04.852.174 1.433.372 1.942.205.52.478.972.923 1.417.444.445.896.719 1.417.923.509.198 1.09.333 1.942.372C5.556 15.99 5.829 16 8 16s2.444-.01 3.297-.048c.852-.04 1.433-.174 1.942-.372.52-.205.972-.478 1.417-.923.445-.444.719-.896.923-1.417.198-.509.333-1.09.372-1.942C15.99 10.444 16 10.171 16 8s-.01-2.444-.048-3.297c-.04-.852-.174-1.433-.372-1.942A3.917 3.917 0 0 0 13.24.42 3.917 3.917 0 0 0 11.8.048C10.95.01 10.671 0 8 0zm0 1.44C10.114 1.44 10.383 1.452 11.2 1.48c.813.028 1.25.166 1.618.31.43.17.743.386 1.062.705.318.318.536.63.705 1.062.145.368.282.805.31 1.618.028.817.04 1.086.04 3.2 0 2.114-.012 2.383-.04 3.2-.028.813-.166 1.25-.31 1.618-.17.43-.386.743-.705 1.062-.318.318-.63.536-1.062.705-.145-.368-.282-.805-.31-1.618-.028-.817-.04-1.086-.04-3.2 0-2.114.012 2.383.04-3.2.028-.813.166 1.25.31-1.618.17-.43.386.743.705-1.062.318.318.63.536 1.062.705.368-.145.805.282 1.618.31.817.028 1.086.04 3.2.04zM8 4.132a3.868 3.868 0 1 0 0 7.736 3.868 3.868 0 0 0 0-7.736zm0 6.276a2.408 2.408 0 1 1 0-4.816 2.408 2.408 0 0 1 0 4.816zM13.868 3.713a.904.904 0 1 1-1.808 0 .904.904 0 0 1 1.808 0z"/>
                             </svg>
                         </a>
                         <a href="https://x.com/Abhay0p" class="text-white text-decoration-none me-3">
@@ -251,10 +252,10 @@
                             <a href="#" class="text-white text-decoration-none">Privacy Policy</a>
                         </li>
                         <li class="mb-2">
-                            <a href="#" class="text-white text-decoration-none">Refund & Cancellation</a>
+                            <a href="contact.html" class="text-white text-decoration-none">Refund & Cancellation</a>
                         </li>
                         <li class="mb-2">
-                            <a href="#" class="text-white text-decoration-none">Contact Us</a>
+                            <a href="contact.html" class="text-white text-decoration-none">Contact Us</a>
                         </li>
                     </ul>
                 </div>
@@ -288,7 +289,7 @@
                         <a href="#" class="me-2">
                             <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" style="height: 50px;">
                         </a>
-                       
+                        
                     </div>
                 </div>
             </div>
@@ -298,60 +299,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
-       // === SCRIPT 1: (NEW) SERVER-BASED LOGIN/LOGOUT STATUS ===
-document.addEventListener('DOMContentLoaded', () => {
-    
-    const loginNavItem = document.getElementById('login-nav-item');
-    const serverUrl = 'https://fullstackgym.onrender.com'; // Your server's URL
-
-    // 1. Check with the server to see if we are *actually* logged in
-    fetch(`${serverUrl}/check-auth`, {
-        method: 'GET',
-        credentials: 'include' // This is VITAL - it sends the session cookie
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json(); // We are logged in!
-        }
-        throw new Error('Not logged in'); // We are not logged in
-    })
-    .then(data => {
-        // --- USER IS LOGGED IN ---
-        // 'data.username' comes from the server
-        loginNavItem.innerHTML = `
-            <a id="logout-link" class="nav-link" href="#" style="cursor: pointer;">
-                <img src="account.png" alt="Logout" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;">
-                Logout (${data.username})
-            </a>
-        `;
-        
-        // Add click event to the new logout link
-        document.getElementById('logout-link').addEventListener('click', (event) => {
-            event.preventDefault();
-            
-            // Call the server's /logout route
-            fetch(`${serverUrl}/logout`, {
-                method: 'POST',
-                credentials: 'include'
-            })
-            .then(() => {
-                // After successful logout, redirect to login
-                window.location.href = 'login.html'; 
-            })
-            .catch(err => console.error('Logout failed:', err));
-        });
-    })
-    .catch(error => {
-        // --- USER IS NOT LOGGED IN ---
-        // Keep the default "Login" button
-        console.log('User is not authenticated.');
-        loginNavItem.innerHTML = `
-            <a class="nav-link" target="_self" href="login.html">
-                <img src="account.png" alt="Login" width="20" height="20" style="margin-right: 5px; vertical-align: text-bottom;">Login
-            </a>
-        `;
-    });
-});
         // === SCRIPT 2: NAVBAR SCROLL & CTA BUTTON (All pages) ===
         document.addEventListener('scroll', () => {
             const navbar = document.getElementById('main-navbar');

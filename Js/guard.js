@@ -3,7 +3,7 @@
     try {
         // Check if the user is logged in.
         // 'credentials: "include"' is VITAL. It sends the session cookie.
-        const response = await fetch('http://localhost:3001/check-auth', {
+        const response = await fetch('https://fullstackgym.onrender.com/check-auth', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

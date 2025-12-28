@@ -1,5 +1,7 @@
 # Fullstack Gym Management System 
 
+![Status](https://img.shields.io/badge/Status-In%20Development-yellow?style=for-the-badge&logo=appveyor)
+
 A robust, secure, and responsive web application designed to manage gym memberships and user authentication. Built with a decoupled architecture using a **Node.js/Express backend** and a lightweight **Vanilla JavaScript frontend**.
 
 

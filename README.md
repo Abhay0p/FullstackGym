@@ -3,7 +3,8 @@
 A robust, secure, and responsive web application designed to manage gym memberships and user authentication. Built with a decoupled architecture using a **Node.js/Express backend** and a lightweight **Vanilla JavaScript frontend**.
 
 ![Project Screenshot](https://via.placeholder.com/800x400?text=Add+Your+Screenshot+Here)
-*(Add a screenshot of your landing page here)*
+<img width="1461" height="925" alt="image" src="https://github.com/user-attachments/assets/d5907d70-0317-412b-aa57-c483fccbc3ee" />
+
 
 ## 🚀 Project Overview
 
